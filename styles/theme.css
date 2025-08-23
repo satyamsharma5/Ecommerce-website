@@ -1,0 +1,111 @@
+/* Artistic Theme Styles */
+
+body {
+	background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+	font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+	color: #222;
+	margin: 0;
+	padding: 0;
+}
+
+.checkout-container, .success-container, .tracking-section {
+	background: rgba(255,255,255,0.85);
+	border-radius: 20px;
+	box-shadow: 0 8px 32px 0 rgba(60,60,120,0.18);
+	max-width: 500px;
+	margin: 40px auto;
+	padding: 32px 24px;
+	text-align: center;
+	position: relative;
+}
+
+h1, h2 {
+	font-family: 'Pacifico', cursive;
+	color: #43c6ac;
+	margin-bottom: 16px;
+}
+
+label {
+	display: block;
+	margin: 16px 0 6px 0;
+	font-weight: 500;
+	color: #222;
+}
+
+input[type="text"], input[type="email"] {
+	width: 90%;
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid #43c6ac;
+	margin-bottom: 12px;
+	font-size: 1em;
+	background: #f8ffae;
+	transition: box-shadow 0.2s;
+}
+input[type="text"]:focus, input[type="email"]:focus {
+	box-shadow: 0 0 8px #43c6ac;
+	outline: none;
+}
+
+.btn {
+	display: inline-block;
+	background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
+	color: #222;
+	font-weight: bold;
+	padding: 12px 32px;
+	border-radius: 30px;
+	border: none;
+	box-shadow: 0 4px 16px rgba(60,60,120,0.12);
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1.1em;
+	margin-top: 18px;
+	transition: background 0.3s, transform 0.2s;
+}
+.btn:hover {
+	background: linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%);
+	transform: scale(1.05);
+}
+
+.order-summary {
+	background: rgba(67,198,172,0.08);
+	border-radius: 12px;
+	padding: 18px;
+	margin-bottom: 24px;
+	box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+}
+
+.payment-options {
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	margin: 18px 0;
+}
+.payment-options label {
+	background: #f8ffae;
+	border-radius: 8px;
+	padding: 8px 16px;
+	box-shadow: 0 2px 8px rgba(67,198,172,0.08);
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.payment-options input[type="radio"] {
+	margin-right: 8px;
+}
+
+/* Artistic accent for success icon */
+img[alt="Order Success"] {
+	filter: drop-shadow(0 0 12px #43c6ac);
+	border-radius: 50%;
+	background: #f8ffae;
+	padding: 12px;
+}
+
+/* Add a floating animation to .success-container */
+.success-container {
+	animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-12px); }
+}

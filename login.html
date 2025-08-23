@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Speak Your Order</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    body {
+      background: linear-gradient(120deg, #ff6fd8 0%, #3813c2 100%);
+      color: #232946;
+    }
+    .auth-container {
+      background: linear-gradient(120deg, #ff6fd8 0%, #f8ffae 100%);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(255,111,216,0.18);
+      color: #232946;
+    }
+    .auth-container h2 {
+      color: #3813c2;
+      font-family: 'Pacifico', cursive;
+      text-shadow: 0 2px 12px #ff6fd8;
+    }
+    button {
+      background: linear-gradient(90deg, #ff6fd8 0%, #3813c2 100%);
+      color: #fff;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 16px rgba(56,19,194,0.12);
+      transition: background 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #3813c2 0%, #ff6fd8 100%);
+      transform: scale(1.05);
+    }
+    input[type="email"], input[type="password"] {
+      border-radius: 8px;
+      border: 1px solid #ff6fd8;
+      padding: 10px;
+      background: #f8ffae;
+      color: #232946;
+      font-size: 1em;
+      margin-bottom: 12px;
+      transition: box-shadow 0.2s;
+    }
+    input[type="email"]:focus, input[type="password"]:focus {
+      box-shadow: 0 0 8px #ff6fd8;
+      outline: none;
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <div class="auth-container">
+    <div id="main-choice" style="text-align:center; margin-bottom:18px;">
+        <button id="show-login" onclick="showLoginChoice()">Existing User Login</button>
+        <button id="show-register-email" onclick="showRegisterEmailForm()">Register with Email</button>
+        <button id="show-register-phone" onclick="showRegisterPhoneForm()">Register with Phone</button>
+    </div>
+    <div id="login-choice" style="display:none; text-align:center; margin-bottom:18px;">
+      <h2>Login</h2>
+  <button onclick="showLoginEmail()">Login with Gmail</button>
+    </div>
+    <form id="login-email-form" style="display:none;">
+  <h3>Login with Gmail</h3>
+  <input type="email" id="login-email" placeholder="Email" required /><br /><br />
+  <input type="password" id="login-password" placeholder="Password" required /><br /><br />
+  <button type="button" onclick="login()">Login</button>
+  <p id="auth-msg"></p>
+    </form>
+    <form id="login-phone-form" style="display:none;">
+  <!-- Phone login removed -->
+    </form>
+      <form id="register-email-form" style="display:none;">
+        <h2>Register with Email</h2>
+        <input type="text" id="reg-name-email" placeholder="Full Name" required /><br /><br />
+        <select id="reg-gender-email" required style="width:90%;padding:10px;border-radius:8px;margin-bottom:12px;">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select><br />
+        <input type="number" id="reg-age-email" placeholder="Age" min="1" max="120" required /><br /><br />
+        <input type="email" id="reg-email-email" placeholder="Email" required /><br /><br />
+        <input type="password" id="reg-password-email" placeholder="Create Password" required /><br /><br />
+        <input type="password" id="reg-confirm-password-email" placeholder="Confirm Password" required /><br /><br />
+        <button type="button" onclick="registerEmail()">Register</button>
+        <p id="reg-msg-email"></p>
+      </form>
+      <form id="register-phone-form" style="display:none;">
+        <h2>Register with Phone</h2>
+        <input type="text" id="reg-name-phone" placeholder="Full Name" required /><br /><br />
+        <select id="reg-gender-phone" required style="width:90%;padding:10px;border-radius:8px;margin-bottom:12px;">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select><br />
+        <input type="number" id="reg-age-phone" placeholder="Age" min="1" max="120" required /><br /><br />
+        <input type="text" id="reg-phone-phone" placeholder="Phone Number" required /><br /><br />
+        <input type="password" id="reg-password-phone" placeholder="Create Password" required /><br /><br />
+        <input type="password" id="reg-confirm-password-phone" placeholder="Confirm Password" required /><br /><br />
+        <button type="button" onclick="registerPhone()">Register</button>
+        <p id="reg-msg-phone"></p>
+      </form>
+  </div>
+  <script>
+    function showLoginChoice() {
+      document.getElementById('main-choice').style.display = 'none';
+      document.getElementById('login-choice').style.display = 'block';
+      document.getElementById('login-email-form').style.display = 'none';
+      document.getElementById('register-email-form').style.display = 'none';
+      document.getElementById('register-phone-form').style.display = 'none';
+    }
+    function showLoginEmail() {
+      document.getElementById('login-choice').style.display = 'none';
+      document.getElementById('login-email-form').style.display = 'block';
+      document.getElementById('register-email-form').style.display = 'none';
+      document.getElementById('register-phone-form').style.display = 'none';
+    }
+    function showRegisterEmailForm() {
+      document.getElementById('main-choice').style.display = 'none';
+      document.getElementById('login-choice').style.display = 'none';
+      document.getElementById('login-email-form').style.display = 'none';
+      document.getElementById('register-email-form').style.display = 'block';
+      document.getElementById('register-phone-form').style.display = 'none';
+    }
+    function showRegisterPhoneForm() {
+      document.getElementById('main-choice').style.display = 'none';
+      document.getElementById('login-choice').style.display = 'none';
+      document.getElementById('login-email-form').style.display = 'none';
+      document.getElementById('register-email-form').style.display = 'none';
+      document.getElementById('register-phone-form').style.display = 'block';
+    }
+    // Default to main choice (run after DOM is loaded)
+    window.onload = function() {
+      document.getElementById('main-choice').style.display = 'block';
+      document.getElementById('login-choice').style.display = 'none';
+      document.getElementById('login-email-form').style.display = 'none';
+      document.getElementById('register-email-form').style.display = 'none';
+      document.getElementById('register-phone-form').style.display = 'none';
+    };
+  </script>
+
+  <script src="scripts/firebase.js"></script>
+  <script src="scripts/auth.js"></script>
+</body>
+</html>

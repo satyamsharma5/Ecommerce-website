@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Order Success</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+		<div class="success-container">
+			<h1>Thank You!</h1>
+			<p>Your order has been placed successfully.</p>
+			<img src="assets/success.png" alt="Order Success" style="width:120px; margin:20px 0;">
+			<div id="order-details"></div>
+			<p>We appreciate your purchase and will notify you when your order is shipped.</p>
+			<a href="index.html" class="btn">Continue Shopping</a>
+			<div class="tracking-section" style="margin-top:30px;">
+				<h2>Track Your Order</h2>
+				<p>Want to know where your order is? Click below for live tracking.</p>
+				<a href="tracking.html" class="btn">Live Tracking</a>
+				<div id="live-tracking-info" style="margin-top:16px;"></div>
+			</div>
+		</div>
+		<script>
+			// Show order details
+			const order = JSON.parse(localStorage.getItem('lastOrder'));
+			if (order) {
+				const details = document.getElementById('order-details');
+				let html = `<h3>Order Summary</h3><ul>`;
+				order.cartItems.forEach(item => {
+					html += `<li>${item.name} - ₹${item.price}</li>`;
+				});
+				html += `</ul><p><strong>Total Paid:</strong> ₹${order.total}</p>`;
+				html += `<p><strong>Shipping to:</strong> ${order.address}</p>`;
+				html += `<p><strong>Payment Method:</strong> ${order.payment}</p>`;
+				details.innerHTML = html;
+				// Simulate live tracking
+				const tracking = document.getElementById('live-tracking-info');
+				tracking.innerHTML = `<span style='color:#3813c2;'>Your order is being processed. Estimated delivery: <b>${new Date(Date.now()+3*24*60*60*1000).toLocaleDateString()}</b></span>`;
+			}
+		</script>
+</body>
+</html>

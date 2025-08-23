@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPEAK YOUR ORDER</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/theme.css" />
+  <style>
+    body.genz-theme {
+      background: linear-gradient(120deg, #ff6fd8 0%, #3813c2 100%);
+      color: #fff;
+    }
+    .genz-header {
+      background: linear-gradient(90deg, #ff6fd8 0%, #3813c2 100%);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(56,19,194,0.18);
+    }
+    .genz-btn {
+      background: linear-gradient(90deg, #ff6fd8 0%, #3813c2 100%);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 16px rgba(56,19,194,0.12);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .genz-btn:hover {
+      background: linear-gradient(90deg, #3813c2 0%, #ff6fd8 100%);
+      transform: scale(1.05);
+    }
+    .logo.genz {
+      color: #ff6fd8;
+      text-shadow: 0 2px 12px #3813c2;
+    }
+    .hero.genz {
+      background: rgba(255,111,216,0.12);
+      color: #3813c2;
+    }
+    .product-card.genz {
+      border: 2px solid #ff6fd8;
+      box-shadow: 0 8px 32px 0 rgba(255,111,216,0.18);
+    }
+  </style>
+
+  <!-- Firebase SDKs (Compat for v9 syntax) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+  <!-- Alan AI SDK -->
+  <script src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
+</head>
+
+<body class="light-theme">
+  <header class="artistic-header">
+    <div class="header-bg"></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 18px;">
+      <h1 class="logo" id="main-logo">🗣️ Speak Your Order</h1>
+      <form id="search-form" style="display:flex;align-items:center;gap:8px;">
+        <input type="text" id="search-bar" placeholder="Search products..." style="padding:8px 16px;border-radius:8px;border:1px solid #ff6fd8;min-width:180px;" />
+        <button type="submit" class="btn" style="padding:8px 18px;">🔍</button>
+      </form>
+      <a href="cart.html" class="cart-icon-btn" title="View Cart">
+        <svg viewBox="0 0 24 24"><path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-12.83-2l1.72-7h13.22l1.72 7h-16.64zm16.64-9h-17.64l-1.72-7h21.08l-1.72 7z"/></svg>
+        <span class="cart-count" id="cart-count" style="display:none;">0</span>
+      </a>
+    </div>
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()" id="theme-btn" class="btn">🌗 Theme</button>
+    </div>
+    <div class="auth-section">
+      <p id="user-greeting"></p>
+      <button onclick="logout()" class="btn">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+  <h2>Order with Your Voice</h2>
+  <p>Shop products easily by speaking your order. Fast, secure, and fun!</p>
+  <img src="assets/hero-voice.png" alt="Voice Shopping" style="width:180px; margin:24px auto; display:block; filter:drop-shadow(0 0 16px #ff6fd8);">
+  <a href="login.html" class="btn" id="get-started-btn">Get Started</a>
+    </section>
+    <section class="products-section">
+      <h2>Available Products</h2>
+      <div class="product-grid" id="products">
+  <!-- Products will be rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Alan AI Button SDK -->
+  <script src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
+
+  <!-- Your custom scripts (order matters!) -->
+  <script src="scripts/firebase.js"></script>
+  <script src="scripts/theme.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/voice.js"></script> <!-- This must come AFTER alan_lib.min.js -->
+  <script src="scripts/cart.js"></script>
+  <script src="scripts/products.js"></script>
+
+  <script>
+    // Theme toggle for GenZ
+    function toggleTheme() {
+      const body = document.body;
+      const logo = document.getElementById('main-logo');
+      const themeBtn = document.getElementById('theme-btn');
+      const hero = document.querySelector('.hero');
+      const getStartedBtn = document.getElementById('get-started-btn');
+      if (!body.classList.contains('genz-theme')) {
+        body.classList.add('genz-theme');
+        logo.classList.add('genz');
+        themeBtn.classList.add('genz-btn');
+        hero.classList.add('genz');
+        getStartedBtn.classList.add('genz-btn');
+        // Add GenZ style to product cards
+        document.querySelectorAll('.product-card').forEach(card => card.classList.add('genz'));
+      } else {
+        body.classList.remove('genz-theme');
+        logo.classList.remove('genz');
+        themeBtn.classList.remove('genz-btn');
+        hero.classList.remove('genz');
+        getStartedBtn.classList.remove('genz-btn');
+        document.querySelectorAll('.product-card').forEach(card => card.classList.remove('genz'));
+      }
+    }
+
+    // Update cart count badge
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.length;
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'inline-block' : 'none';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+    window.addEventListener('storage', updateCartCount);
+  </script>
+
+  <script>
+    // Theme toggle for GenZ
+    function toggleTheme() {
+      const body = document.body;
+      const logo = document.getElementById('main-logo');
+      const themeBtn = document.getElementById('theme-btn');
+      const hero = document.querySelector('.hero');
+      const getStartedBtn = document.getElementById('get-started-btn');
+      if (!body.classList.contains('genz-theme')) {
+        body.classList.add('genz-theme');
+        logo.classList.add('genz');
+        themeBtn.classList.add('genz-btn');
+        hero.classList.add('genz');
+        getStartedBtn.classList.add('genz-btn');
+        // Add GenZ style to product cards
+        document.querySelectorAll('.product-card').forEach(card => card.classList.add('genz'));
+      } else {
+        body.classList.remove('genz-theme');
+        logo.classList.remove('genz');
+        themeBtn.classList.remove('genz-btn');
+        hero.classList.remove('genz');
+        getStartedBtn.classList.remove('genz-btn');
+        document.querySelectorAll('.product-card').forEach(card => card.classList.remove('genz'));
+      }
+    }
+  </script>
+
+</body>
+</html>

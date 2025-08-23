@@ -1,0 +1,242 @@
+[
+  {
+    "id": "p1",
+    "name": "iPhone 14 Pro Max",
+    "price": 130667,
+    "image": "C:\\Users\\asus\\Downloads\\iphone14promax.jpeg"
+  },
+  {
+    "id": "p2",
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": 119361,
+    "image": "assets/products/samsung_galaxy_s24_ultra.jpg"
+  },
+  {
+    "id": "p3",
+    "name": "OnePlus 12",
+    "price": 116972,
+    "image": "assets/products/oneplus_12.jpg"
+  },
+  {
+    "id": "p4",
+    "name": "Google Pixel 8 Pro",
+    "price": 82432,
+    "image": "assets/products/google_pixel_8_pro.jpg"
+  },
+  {
+    "id": "p5",
+    "name": "Xiaomi 13 Pro",
+    "price": 126379,
+    "image": "assets/products/xiaomi_13_pro.jpg"
+  },
+  {
+    "id": "p6",
+    "name": "MacBook Air M2",
+    "price": 17378,
+    "image": "assets/products/macbook_air_m2.jpg"
+  },
+  {
+    "id": "p7",
+    "name": "Dell XPS 15",
+    "price": 34720,
+    "image": "assets/products/dell_xps_15.jpg"
+  },
+  {
+    "id": "p8",
+    "name": "HP Spectre x360",
+    "price": 91913,
+    "image": "assets/products/hp_spectre_x360.jpg"
+  },
+  {
+    "id": "p9",
+    "name": "Lenovo Yoga 7i",
+    "price": 15964,
+    "image": "assets/products/lenovo_yoga_7i.jpg"
+  },
+  {
+    "id": "p10",
+    "name": "ASUS ROG Zephyrus",
+    "price": 138136,
+    "image": "assets/products/asus_rog_zephyrus.jpg"
+  },
+  {
+    "id": "p11",
+    "name": "Sony WH-1000XM5",
+    "price": 75660,
+    "image": "assets/products/sony_wh1000xm5.jpg"
+  },
+  {
+    "id": "p12",
+    "name": "Bose QC45",
+    "price": 85767,
+    "image": "assets/products/bose_qc45.jpg"
+  },
+  {
+    "id": "p13",
+    "name": "AirPods Pro",
+    "price": 10247,
+    "image": "assets/products/airpods_pro.jpg"
+  },
+  {
+    "id": "p14",
+    "name": "JBL Tune 760NC",
+    "price": 13490,
+    "image": "assets/products/jbl_tune_760nc.jpg"
+  },
+  {
+    "id": "p15",
+    "name": "Boat Rockerz 550",
+    "price": 130850,
+    "image": "assets/products/boat_rockerz_550.jpg"
+  },
+  {
+    "id": "p16",
+    "name": "Apple Watch Series 9",
+    "price": 139460,
+    "image": "assets/products/apple_watch_series_9.jpg"
+  },
+  {
+    "id": "p17",
+    "name": "Samsung Galaxy Watch 6",
+    "price": 41930,
+    "image": "assets/products/samsung_galaxy_watch_6.jpg"
+  },
+  {
+    "id": "p18",
+    "name": "Noise ColorFit Ultra",
+    "price": 100091,
+    "image": "assets/products/noise_colorfit_ultra.jpg"
+  },
+  {
+    "id": "p19",
+    "name": "Fire-Boltt Ninja",
+    "price": 22974,
+    "image": "assets/products/fireboltt_ninja.jpg"
+  },
+  {
+    "id": "p20",
+    "name": "Amazfit GTS 4",
+    "price": 3995,
+    "image": "assets/products/amazfit_gts_4.jpg"
+  },
+  {
+    "id": "p21",
+    "name": "Logitech MX Master 3",
+    "price": 145832,
+    "image": "assets/products/logitech_mx_master_3.jpg"
+  },
+  {
+    "id": "p22",
+    "name": "Anker Power Bank 20k mAh",
+    "price": 46639,
+    "image": "assets/products/anker_power_bank_20k_mah.jpg"
+  },
+  {
+    "id": "p23",
+    "name": "Mi Smart Band 7",
+    "price": 66973,
+    "image": "assets/products/mi_smart_band_7.jpg"
+  },
+  {
+    "id": "p24",
+    "name": "SanDisk 1TB SSD",
+    "price": 60215,
+    "image": "assets/products/sandisk_1tb_ssd.jpg"
+  },
+  {
+    "id": "p25",
+    "name": "WD 2TB HDD",
+    "price": 58373,
+    "image": "assets/products/wd_2tb_hdd.jpg"
+  },
+  {
+    "id": "p26",
+    "name": "Canon EOS R10",
+    "price": 142486,
+    "image": "assets/products/canon_eos_r10.jpg"
+  },
+  {
+    "id": "p27",
+    "name": "Sony Alpha ZV-E10",
+    "price": 5137,
+    "image": "assets/products/sony_alpha_zve10.jpg"
+  },
+  {
+    "id": "p28",
+    "name": "Nikon Z30",
+    "price": 127339,
+    "image": "assets/products/nikon_z30.jpg"
+  },
+  {
+    "id": "p29",
+    "name": "GoPro Hero 11",
+    "price": 21802,
+    "image": "assets/products/gopro_hero_11.jpg"
+  },
+  {
+    "id": "p30",
+    "name": "DJI Pocket 2",
+    "price": 124216,
+    "image": "assets/products/dji_pocket_2.jpg"
+  },
+  {
+    "id": "p31",
+    "name": "Xbox Series X",
+    "price": 27643,
+    "image": "assets/products/xbox_series_x.jpg"
+  },
+  {
+    "id": "p32",
+    "name": "PlayStation 5",
+    "price": 68589,
+    "image": "assets/products/playstation_5.jpg"
+  },
+  {
+    "id": "p33",
+    "name": "Nintendo Switch OLED",
+    "price": 91128,
+    "image": "assets/products/nintendo_switch_oled.jpg"
+  },
+  {
+    "id": "p34",
+    "name": "Razer BlackWidow V3",
+    "price": 22683,
+    "image": "assets/products/razer_blackwidow_v3.jpg"
+  },
+  {
+    "id": "p35",
+    "name": "Logitech G502 Hero",
+    "price": 77351,
+    "image": "assets/products/logitech_g502_hero.jpg"
+  },
+  {
+    "id": "p36",
+    "name": "Google Nest Hub",
+    "price": 92877,
+    "image": "assets/products/google_nest_hub.jpg"
+  },
+  {
+    "id": "p37",
+    "name": "Amazon Echo Dot 5",
+    "price": 18740,
+    "image": "assets/products/amazon_echo_dot_5.jpg"
+  },
+  {
+    "id": "p38",
+    "name": "Mi Smart LED Bulb",
+    "price": 76316,
+    "image": "assets/products/mi_smart_led_bulb.jpg"
+  },
+  {
+    "id": "p39",
+    "name": "TP-Link Smart Plug",
+    "price": 58567,
+    "image": "assets/products/tplink_smart_plug.jpg"
+  },
+  {
+    "id": "p40",
+    "name": "Blink Mini Camera",
+    "price": 19510,
+    "image": "assets/products/blink_mini_camera.jpg"
+  }
+]
