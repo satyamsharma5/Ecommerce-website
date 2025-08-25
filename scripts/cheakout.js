@@ -59,12 +59,14 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("checkout-form").addEventListener("submit", function(e) {
   e.preventDefault();
   const name = document.getElementById("name").value;
+  const gender = document.getElementById("gender").value;
+  const phone = document.getElementById("phone").value;
   const address = document.getElementById("address").value;
   const payment = document.querySelector('input[name="payment-method"]:checked').value;
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
   const total = cartItems.reduce((sum, item) => sum + Number(item.price), 0);
   // Save order details for success page
-  localStorage.setItem("lastOrder", JSON.stringify({ name, address, payment, cartItems, total }));
+  localStorage.setItem("lastOrder", JSON.stringify({ name, gender, phone, address, payment, cartItems, total }));
   // Clear cart
   localStorage.removeItem("cart");
   window.location.href = "order-success.html";

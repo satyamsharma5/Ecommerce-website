@@ -31,6 +31,9 @@
 				});
 				html += `</ul><p><strong>Total Paid:</strong> ₹${order.total}</p>`;
 				html += `<p><strong>Shipping to:</strong> ${order.address}</p>`;
+				html += `<p><strong>Name:</strong> ${order.name}</p>`;
+				html += `<p><strong>Gender:</strong> ${order.gender}</p>`;
+				html += `<p><strong>Phone:</strong> ${order.phone}</p>`;
 				html += `<p><strong>Payment Method:</strong> ${order.payment}</p>`;
 				details.innerHTML = html;
 				// Simulate live tracking
